@@ -15,3 +15,6 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+// Learn routing to home
+Route::get('/product', "ProductController@showProduct");
