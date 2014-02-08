@@ -18,3 +18,6 @@ Route::get('/', function()
 
 // Learn routing to home
 Route::get('/product', "ProductController@showProduct");
+
+// get user
+Route::get('/user',"UserController@getUser");
