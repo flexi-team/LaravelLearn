@@ -1,0 +1,3 @@
+- CSS/SCSS Guidelines
+http://smacss.com/book/categorizing
+ 
