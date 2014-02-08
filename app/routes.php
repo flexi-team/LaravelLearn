@@ -18,3 +18,27 @@ Route::get('/', function()
 
 // Learn routing to home
 Route::get('/product', "ProductController@showProduct");
+
+// Test authentication 
+// Tutorial - http://code.tutsplus.com/tutorials/laravel-4-a-start-at-a-restful-api--net-29785
+Route::filter('auth.basic', function()
+{
+    return Auth::basic();
+});
+
+Route::get('/authtest',array('before'=>'auth.basic',function(){
+  return View::make('hello');
+}));
+
+// Route group for API versioning
+Route::group(array('prefix' => 'api/v1', 'before' => 'auth.basic'), function()
+{
+    Route::resource('users', 'UserApiController');
+});
+
+
+
+//Route::post('/api/login',"UserApiController@postLogin");
+
+// Get User Data
+//Route::get('/api/users', "UserApiController@getList");
