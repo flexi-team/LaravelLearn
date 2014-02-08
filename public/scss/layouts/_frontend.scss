@@ -1,6 +1,17 @@
+body{
+	max-width:960px;
+	margin:0px auto;
+}
+
 header{
-  color:black;
+  	nav{
+  		ul{
+  			li{
+  				display:inline-block;
+  			}
+  		}
+  	}
 }
 footer{
-  color:white;
+  color:#FFF;
 }

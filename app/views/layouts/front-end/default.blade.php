@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 	<title>Laravel Testing</title>
-
+	{{HTML::style('css/main.css')}}
 </head>
 <body>
 
 	<!-- =========== header layout ========= -->
 	<header>
-		@yield('header')
+		@include('includes.header')
 	</header>	
 
 	<!-- =========== content layout ======== -->
@@ -18,7 +18,7 @@
 
 	<!-- =========== footer ========== -->
 	<footer>
-		@yield('footer')
+		@include('includes.footer')
 	</footer>
 
 </body>
