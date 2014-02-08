@@ -1,5 +1,4 @@
 <?php
-//namespace Api;
 
 class UserApiController extends ApiController {
 
@@ -24,13 +23,5 @@ class UserApiController extends ApiController {
 		
 	}
 
-
-  /* ===============================================
-    Login
-    ================================================*/
-  public function postLogin($data){
-
-    return $this->baseSuccess($data);
-  }
 
 }

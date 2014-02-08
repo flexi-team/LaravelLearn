@@ -17,10 +17,11 @@ class CreateUsersTable extends Migration {
 			$table->bigIncrements('id')->unsigned();
 			$table->string('email')->unique();
 			$table->string('username','25')->unique();
-			$table->string('password','25');
+			$table->string('password','100'); // At Least 100, since it is used to store hash value
 			$table->string('name');			
 			$table->string('title','5');
 			$table->string('gender','1');
+			$table->string('status_code','3');
 			$table->smallInteger('points');
 			$table->timestamps();
 
@@ -33,6 +34,7 @@ class CreateUsersTable extends Migration {
 			$table->bigInteger('user_auth_id')->unsigned();
 			$table->string('contact_address','200');
 			$table->index('user_auth_id');
+			$table->string('status_code','3');
 			$table->foreign('user_auth_id')->references('id')->on('users');
 			$table->timestamps();
 
@@ -45,11 +47,11 @@ class CreateUsersTable extends Migration {
 			$table->bigInteger('user_auth_id')->unsigned();
 			$table->string('auth_type','40');
 			$table->string('auth_name','40');
-			$table->string('token','64');
-			$table->string('secret','64');
+			$table->string('token','100');
+			$table->string('secret','100');
+			$table->bigInteger('token_expired_on');
 			$table->index('user_auth_id');
-
-
+			$table->string('status_code','3');
 			$table->foreign('user_auth_id')->references('id')->on('users');
 			$table->timestamps();
 

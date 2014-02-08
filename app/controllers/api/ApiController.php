@@ -1,7 +1,14 @@
 <?php
 
 
-//namespace Api;
+namespace api;
+use \Controller;
+use \Auth;
+use \Input;
+use \Route;
+use \Response;
+use \Request;
+use \Hash;
 
 class ApiController extends Controller {
 
@@ -20,6 +27,17 @@ class ApiController extends Controller {
 
 	public function baseUnimplemented(){
 		return Response::json(array('status' => 'error', 'response' => 'This API is Not Implemented'));
+	}
+
+	public function isAuthenticated(){
+
+		$authFlag = false;
+
+		// Check Access Token
+
+		// Check Remember Me
+
+		// Check Session
 	}
 
 }

@@ -20,4 +20,21 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+	public function showDashboard()
+	{
+
+		return View::make('backend.dashboard');
+	}
+
+	public function showLogin()
+	{
+		//echo (Response::json(User::all()));
+		return View::make('frontend.login');
+	}
+
+	public function showHome()
+	{
+		return View::make('frontend.home');
+	}
+
 }
