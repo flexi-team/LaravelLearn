@@ -1,8 +1,9 @@
 p {
   color: red; }
 
-header {
-  color: black; }
+body {
+  max-width: 960px;
+  margin: 0px auto; }
 
-footer {
-  color: white; }
+header nav ul li {
+  display: inline-block; }

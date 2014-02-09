@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>Laravel Testing</title>
+	<head>
+		<title>Laravel Testing</title>
+		{{HTML::style('css/main.css')}}
+	</head>
+	<body>
 
-</head>
-<body>
+		<!-- =========== header layout ========= -->
+		<header>
+			@section('sidebar')
+	d;fa'dfsahf
+@show
+			<!-- @yield('sidebar') -->
+			@include('includes.header')
+		</header>	
 
-	<!-- =========== header layout ========= -->
-	<header>
-		@yield('header')
-	</header>	
+		<!-- =========== content layout ======== -->
+		<section>
 
-	<!-- =========== content layout ======== -->
-	<section>
-		@yield('content')
-	</section>
+			@yield('content')
+		</section>
 
-	<!-- =========== footer ========== -->
-	<footer>
-		@yield('footer')
-	</footer>
+		<!-- =========== footer ========== -->
+		<footer>
+			@include('includes.header')
+		</footer>
 
-</body>
+	</body>
 	
 </html>
