@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="sampleApp">
-
+<html lang="en">
 	<head>
 		<title>Laravel Testing</title>
 		{{HTML::style('css/main.css')}}
 	</head>
-
 	<body>
 
 		<!-- =========== header layout ========= -->
 		<header>
+			@section('sidebar')
+				dfasfsdfs
+			@show
+
+			<!-- @yield('sidebar') -->
 			@include('includes.header')
 		</header>	
 
@@ -25,7 +28,4 @@
 
 	</body>
 	
-	{{ HTML::script('https://ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular.min.js'); }}
-	{{ HTML::script('packages/main.js'); }}
-
 </html>

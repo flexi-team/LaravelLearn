@@ -7,6 +7,9 @@ class UserController extends BaseController {
 	 *
 	 * @return Response
 	 */
+
+	protected $layout='layouts.front-end.default';
+
 	public function index()
 	{
         return View::make('users.index');
@@ -15,6 +18,7 @@ class UserController extends BaseController {
 	// get 
 	public function getUser(){
 		return View::make('user.index');
+		// $this->layout->content=view::make('user.index');
 		// return '<p>Seng Panhna</p>';
 	}
 
