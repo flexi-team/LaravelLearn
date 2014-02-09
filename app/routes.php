@@ -34,14 +34,36 @@ Route::get('/authtest',array('before'=>'auth.basic',function(){
   return View::make('hello');
 }));
 */
-// Route group for API versioning
+
+
+// Filter custom auth
+Route::filter('custom.auth',function(){
+    // Check authentication with api login with token or session
+    $hasAccess = UserAuth::customAuth();
+    // If the returned response is not true aka the error message, print that message
+
+    if ($hasAccess===true){
+        
+    }
+    else{
+        return $hasAccess;
+    }
+
+});
+/*
+Route::get('/authtest',array('before'=>'custom.auth',function(){
+  return "hi";
+}));
+*/
+/*______________________________________________________________
+|
+| Route group for API versioning for non-required login
+|_______________________________________________________________*/
 Route::group(array('prefix' => 'api/v1'), function()
 {
-    Route::resource('users', 'UserApiController');
+    Route::resource('users', '\api\UserApiController');
     Route::resource('auth', 'AuthApiController');
 
-    // V1 Custom Authentication
-    //Route::post('login', '\api\AuthApiController@login');
     // Login from web
     Route::post('login', array('before' => 'csrf','\api\AuthApiController@login'));
     // Login from Ajax or Mobile
@@ -49,8 +71,13 @@ Route::group(array('prefix' => 'api/v1'), function()
 });
 
 
+/*______________________________________________________________
+|
+| Route group for API versioning for required authentication
+|_______________________________________________________________*/
+Route::group(array('prefix' => 'api/v1','before'=>'custom.auth'), function()
+{
+    Route::resource('users', '\api\UserApiController');
 
-//Route::post('/api/login',"UserApiController@postLogin");
+});
 
-// Get User Data
-//Route::get('/api/users', "UserApiController@getList");

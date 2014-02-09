@@ -1,27 +1,43 @@
 <?php
 
+
+namespace api;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use \api\ApiController;
+use \Hash;
+use \User;
+use \UserAuth;
+use \Response;
+
+/*____________________________________________________________
+|
+| User API Controller
+|_____________________________________________________________
+|
+| Use Case:
+| Get user/ users
+| Create User/Register Object
+| Update User object
+|_____________________________________________________________
+|
+|
+|
+|_____________________________________________________________*/
 class UserApiController extends ApiController {
 
-  /*
-    Index method of user api controllers
-  */
+
+  /*____________________________________________________________
+  |
+  | Index method of user api controllers
+  | param: @get
+  |_____________________________________________________________*/
   public function index(){
     return $this->baseUnimplemented();
   }
 
-	/* ============================================
-		Get all user list
-		============================================= */
-	public function getList(){
-    if (Auth::guest()){
-      return $this->baseUnauthorized();
-    }
-    else{
-      $user = User::all();
-      return $this->baseSuccess($user);
-    }
-		
-	}
+	
 
 
 }
