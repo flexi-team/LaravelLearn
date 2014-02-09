@@ -19,6 +19,7 @@ use \Response;
 | #1 User login with username/email and password from website
 | #2 User login with token of social such as facebook or g+
 | #3 User login with username/email and password from mobile/api
+| #4 User logout from mobile/api
 |_____________________________________________________________
 |
 |
@@ -33,11 +34,42 @@ class AuthApiController extends ApiController {
     return $this->baseUnimplemented();
   }
 
+
+  /*____________________________________________________________
+  |
+  | Logout Action for Use Case #4
+  | param: none
+  |_____________________________________________________________*/
+  public function apiLogout(){
+
+    if (Auth::check()){
+      $userID = Auth::user()->id;
+
+      // Logout from Auth
+      Auth::logout();
+
+      // Logout from api
+      $user = UserAuth::ofUser($userID)->apiLogin();
+      $user->update(
+        array(
+          "token" => "",
+          "token_expired_on" => ""
+        )
+      );
+      return $this->baseSuccess("You Are Now Logout!");
+    }
+    else{
+      return $this->baseError("You Are Already Logout!");
+    }
+    
+    
+  }
+
 	
   /*____________________________________________________________
   |
   | Login Action for Use Case #3
-  | param: @email, @password
+  | param: none
   |_____________________________________________________________*/
   public function apiLogin(){
 

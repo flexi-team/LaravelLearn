@@ -41,7 +41,7 @@ Route::filter('custom.auth',function(){
     // Check authentication with api login with token or session
     $hasAccess = UserAuth::customAuth();
     // If the returned response is not true aka the error message, print that message
-
+    
     if ($hasAccess===true){
         
     }
@@ -50,24 +50,26 @@ Route::filter('custom.auth',function(){
     }
 
 });
-/*
+
 Route::get('/authtest',array('before'=>'custom.auth',function(){
-  return "hi";
+  return "Your Are Authorized!";
 }));
-*/
+
 /*______________________________________________________________
 |
 | Route group for API versioning for non-required login
 |_______________________________________________________________*/
 Route::group(array('prefix' => 'api/v1'), function()
 {
-    Route::resource('users', '\api\UserApiController');
+    //Route::resource('users', '\api\UserApiController');
     Route::resource('auth', 'AuthApiController');
 
     // Login from web
     Route::post('login', array('before' => 'csrf','\api\AuthApiController@login'));
     // Login from Ajax or Mobile
     Route::post('api-login','\api\AuthApiController@apiLogin');
+    // Logout from Mobile or API (Ajax call)
+    Route::get('api-logout','\api\AuthApiController@apiLogout');
 });
 
 
