@@ -9,7 +9,7 @@
 		<!-- =========== header layout ========= -->
 		<header>
 			@section('sidebar')
-				
+				dfasfsdfs
 			@show
 
 			<!-- @yield('sidebar') -->
