@@ -88,7 +88,8 @@ class AuthApiController extends ApiController {
 
         // Auth Attempt With Success and generate token
         return $this->baseSuccess(array(
-          "api" => $this->storeToken($email)
+          "api" => $this->storeToken($email),
+          "message" => "You has been logged in Successfully!"
         ));
       }
       else{
