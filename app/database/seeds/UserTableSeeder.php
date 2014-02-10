@@ -21,6 +21,13 @@ class UserTableSeeder extends Seeder {
             'status_code' => '1',
             'password' => Hash::make('123')
         ));
+
+        DB::table('UserSetting')->delete();
+        User::create(array(
+            'allowNoti'=>'0',
+            'allowMsg'=>'1'
+        ));
+
     }
  
 }

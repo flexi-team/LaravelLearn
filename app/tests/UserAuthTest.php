@@ -27,14 +27,54 @@ class UserAuthTest extends TestCase {
   |_____________________________________________________________*/
 	public function testAccessUserWithNoToken()
 	{
-		//$crawler = $this->client->request('GET', '/api/v1/users');
+
+    // Enable filter for this auth test
+    $this->app['router']->enableFilters();
+
 		// Logout first
 		$response = $this->call('GET', '/api/v1/api-logout');
-
+    // Test request to access user list
 		$response = $this->call('GET', '/api/v1/users');
-		//$this->assertViewHas('You are not authorized!');
-		echo $response->getContent();
+    // Test request is not authorized
 		$this->assertTrue(strpos($response->getContent(),"You are not authorized")!==false);
 	}
+
+
+  /*____________________________________________________________
+  |
+  | TestCase - Case 2
+  |_____________________________________________________________
+  | Trying to access to /api/v1/api-login to login with email/pw
+  |_____________________________________________________________*/
+  public function testUserLogin()
+  {
+    
+    // Test request to login
+    $response = $this->call('POST', '/api/v1/api-login',array("email"=>"admin@admin.com" , "password"=>"123"));
+    // Test request is not authorized
+    $this->assertTrue(strpos($response->getContent(),"You has been logged in Successfully!")!==false);
+  }
+
+  /*____________________________________________________________
+  |
+  | TestCase - Case 3
+  |_____________________________________________________________
+  | Trying to access to /api/v1/api-login to login with email/pw
+  |_____________________________________________________________*/
+  public function testUserAccessWithToken()
+  {
+    
+    // Test request to login
+    $response = $this->call('POST', '/api/v1/api-login',array("email"=>"admin@admin.com" , "password"=>"123"));
+    $loginResult = json_decode($response->getContent(),true);
+    
+    $token = $loginResult["response"]["api"];
+
+    // Test request to access user list
+    $response = $this->call('GET', '/api/v1/users',[],[],["Authorization"=>$token]);
+    
+    // Test request is not authorized
+    $this->assertTrue(count(json_decode($response->getContent(),true))>=2);
+  }
 
 }

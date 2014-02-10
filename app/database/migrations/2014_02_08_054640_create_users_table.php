@@ -27,6 +27,14 @@ class CreateUsersTable extends Migration {
 
 		});
 
+
+		Schema::create("UserSetting",function($table){
+			$table->bigIncrements('id')->unsigned();
+			$table->boolean('allowNoti');
+			$table->boolean('allowMsg');
+			$table->timestamps();
+		});
+
 		// Create User Table - Profile 
 
 		Schema::create("profiles",function($table){

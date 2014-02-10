@@ -14,7 +14,10 @@ class UserController extends BaseController {
 
 	// get 
 	public function getUser(){
-		return View::make('user.index');
+		// return View::make('user.index');
+	    $users = User::all();
+
+	    return View::make('user.index')->with('users', $users);
 		// return '<p>Seng Panhna</p>';
 	}
 
