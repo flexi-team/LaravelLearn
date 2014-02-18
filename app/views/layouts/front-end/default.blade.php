@@ -3,6 +3,8 @@
 	<head>
 		<title>Laravel Testing</title>
 		{{HTML::style('css/main.css')}}
+
+		{{HTML::script('packages/requirejs/require.js',array("data-main"=>"packages/requirejs/main"))}}
 	</head>
 	<body>
 
