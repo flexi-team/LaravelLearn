@@ -14,6 +14,8 @@ require([
     // Load jquery library
     base + 'packages/jquery/jquery-1.11.0.min',
     // Load angularjs library
-    base + 'packages/angularjs/angular.min'
+    base + 'packages/angularjs/angular.min',
+    // Load JS APP
+    base + 'packages/app/app',
 
 ]);
