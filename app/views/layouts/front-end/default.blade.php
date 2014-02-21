@@ -11,8 +11,8 @@
 		<!-- =========== header layout ========= -->
 		<header>
 			@section('sidebar')
-	d;fa'dfsahf
-@show
+				
+			@show
 			<!-- @yield('sidebar') -->
 			@include('includes.header')
 		</header>	

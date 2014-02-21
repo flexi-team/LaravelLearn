@@ -49,6 +49,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
+	/*____________________________________________________________
+  |
+  | Relationship definement between auth and user object
+  | Param: none
+  |_____________________________________________________________*/
+	public function auth(){
+		return $this->hasMany('UserAuth','user_auth_id','id');
+	}
+
 	
 
 }
