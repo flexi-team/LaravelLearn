@@ -29,7 +29,6 @@
 
 		<!-- =========== content layout ======== -->
 		<main>
-
 			@yield('content')
 		</main>
 
