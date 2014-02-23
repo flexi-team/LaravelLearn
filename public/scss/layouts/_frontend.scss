@@ -61,4 +61,20 @@ body{
 		}
 	}
 }
+#UI{
+	#Content3D{
+		.box{
+			overflow:hidden;
+			// padding:15px 0px;
+			background: $myGray;
+			border:1px solid $myGrayHover;
+			min-height: 300px;
+			&:hover{
+				@include perspective(600);
+				@include transform(rotateY(180deg));
+				@include backface-visibility(hidden);
+			}
+		}
+	}
+}
 
