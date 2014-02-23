@@ -1,17 +1,27 @@
 body{
 	max-width:960px;
 	margin:0px auto;
+	>header{
+	  	nav{
+	  		background:rgb(243, 243, 243);
+	  		ul{
+	  			li{
+	  				display:inline-block;
+	  				padding:5px 10px;
+	  			}
+	  		}
+	  	}
+	}
+
+	>main{
+		// background:black;
+		min-height: 400px;
+	}
+
+	>footer{
+		h5{
+			text-align: center;
+		}
+	}
 }
 
-header{
-  	nav{
-  		ul{
-  			li{
-  				display:inline-block;
-  			}
-  		}
-  	}
-}
-footer{
-	
-}

@@ -9,21 +9,20 @@
 		<!-- =========== header layout ========= -->
 		<header>
 			@section('sidebar')
-	d;fa'dfsahf
-@show
+				d;fa'dfsahf
+			@show
 			<!-- @yield('sidebar') -->
 			@include('includes.header')
 		</header>	
 
 		<!-- =========== content layout ======== -->
-		<section>
-
+		<main>
 			@yield('content')
-		</section>
+		</main>
 
 		<!-- =========== footer ========== -->
 		<footer>
-			@include('includes.header')
+			@include('includes.footer')
 		</footer>
 
 	</body>

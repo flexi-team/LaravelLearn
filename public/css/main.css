@@ -1,9 +1,21 @@
 p {
-  color: red; }
+  color: red;
+}
 
 body {
   max-width: 960px;
-  margin: 0px auto; }
-
-header nav ul li {
-  display: inline-block; }
+  margin: 0px auto;
+}
+body > header nav {
+  background: #f3f3f3;
+}
+body > header nav ul li {
+  display: inline-block;
+  padding: 5px 10px;
+}
+body > main {
+  min-height: 400px;
+}
+body > footer h5 {
+  text-align: center;
+}
