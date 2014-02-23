@@ -21,7 +21,7 @@ Route::get('/product', "ProductController@showProduct");
 
 // Route to home
 Route::get('/', "HomeController@showHome");
-Route::get('/login', "HomeController@showLogin");
+Route::get('/login', "UserController@getLogin");
 
 Route::get('/user', "UserController@getUser");
 
@@ -84,6 +84,11 @@ Route::group(array('prefix' => 'api/v1'), function()
 Route::group(array('prefix' => 'api/v1','before'=>'custom.auth'), function()
 {
     Route::resource('users', '\api\UserApiController');
+
+    // Store user auth
+    Route::post('users/{userHandle}/authentication','\api\UserApiController@storeUserAuth');
+    // Get user auth by specific id
+    Route::get('users/{userHandle}/authentication/{userAuthHandle}','\api\UserApiController@getUserAuth');
 
 });
 

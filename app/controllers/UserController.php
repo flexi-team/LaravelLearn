@@ -21,6 +21,11 @@ class UserController extends BaseController {
 		// return '<p>Seng Panhna</p>';
 	}
 
+	// Get login view
+	public function getLogin(){
+		return View::make('user.login');
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *

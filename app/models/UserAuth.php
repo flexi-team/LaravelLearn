@@ -12,6 +12,9 @@ class UserAuth extends Eloquent {
 	 */
 	protected $table = 'users_auth';
 
+  // Put guard on some attribute
+  protected $guarded = array('id');
+
 
 	/**
 	 * Override fillable fields
@@ -57,6 +60,16 @@ class UserAuth extends Eloquent {
     $timestamp = date_timestamp_get($date);
 
     return $query->where('token_expired_on', '>', $timestamp);
+  }
+
+  /*____________________________________________________________
+  |
+  | Relationship definement between auth and user object
+  | Param: none
+  |_____________________________________________________________*/
+  public function user()
+  {
+      return $this->belongsTo('User','user_auth_id','id');
   }
 
 

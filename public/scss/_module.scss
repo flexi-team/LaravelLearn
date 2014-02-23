@@ -1,0 +1,34 @@
+// Login 1231231--
+//
+// ============================================================================
+
+   
+// Login form
+.login-form{
+  .login-form-email-control{
+
+    .login-form-group-addon{
+      border-bottom-left-radius: 0px;
+    }
+    input{
+      border-bottom-right-radius: 0px;
+    }
+  }
+  .login-form-password-control{
+    .login-form-group-addon{
+      border-top-left-radius: 0px;
+    }
+    input{
+      border-top-right-radius: 0px;
+    }
+  }
+  .login-form-buttons{
+    margin-top:20px;
+    button{
+      border-radius:0px;
+    }
+  }
+  .login-form-group-addon{
+    min-width: 100px;
+  }
+}

@@ -3,26 +3,29 @@
 	<head>
 		<title>Laravel Testing</title>
 		{{HTML::style('css/main.css')}}
+
+		{{HTML::script('packages/requirejs/require.js',array("data-main"=>"packages/requirejs/main"))}}
 	</head>
 	<body>
 
 		<!-- =========== header layout ========= -->
 		<header>
 			@section('sidebar')
-				d;fa'dfsahf
+				
 			@show
 			<!-- @yield('sidebar') -->
 			@include('includes.header')
 		</header>	
 
 		<!-- =========== content layout ======== -->
-		<main>
+		<section>
+
 			@yield('content')
-		</main>
+		</section>
 
 		<!-- =========== footer ========== -->
 		<footer>
-			@include('includes.footer')
+			@include('includes.header')
 		</footer>
 
 	</body>
