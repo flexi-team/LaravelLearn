@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends BaseController {
+class UIController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,21 +9,7 @@ class UserController extends BaseController {
 	 */
 	public function index()
 	{
-        return View::make('users.index');
-	}
-
-	// get 
-	public function getUser(){
-		// return View::make('user.index');
-	    $users = User::all();
-
-	    return View::make('user.index')->with('users', $users);
-		// return '<p>Seng Panhna</p>';
-	}
-
-	// Get login view
-	public function getLogin(){
-		return View::make('user.login');
+        return View::make('frontend.UI.index');
 	}
 
 	/**
@@ -33,7 +19,7 @@ class UserController extends BaseController {
 	 */
 	public function create()
 	{
-        return View::make('users.create');
+        return View::make('frontend.UI.create');
 	}
 
 	/**
@@ -54,7 +40,7 @@ class UserController extends BaseController {
 	 */
 	public function show($id)
 	{
-        return View::make('users.show');
+        return View::make('frontend.UI.show');
 	}
 
 	/**
@@ -65,7 +51,7 @@ class UserController extends BaseController {
 	 */
 	public function edit($id)
 	{
-        return View::make('users.edit');
+        return View::make('frontend.UI.edit');
 	}
 
 	/**

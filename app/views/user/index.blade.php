@@ -18,4 +18,13 @@
 		Hello 3423423
 	@endif
 
+	<button><?= Lang::get('component.save',array('name'=>'panhna','tbName'=>'tbUesr')); ?></button>
+	<button><?= trans('component.save'); ?></button>
+
+	<button><?= Lang::choice('component.apples',15);?></button>
+
+    @foreach($users as $user)
+        <p>{{ $user->name }}</p>
+    @endforeach
+
 @stop

@@ -1,17 +1,64 @@
+$myGray:rgb(243, 243, 243);
+$myGrayHover:#E6E6E6;
 body{
 	max-width:960px;
 	margin:0px auto;
+	>header{
+		position: relative;
+	  	nav{
+	  		background:$myGray;
+	  		ul{
+	  			margin:0px;
+	  			li{
+	  				display:inline-block;
+	  				&:hover{
+	  					background:$myGrayHover;
+	  				}
+	  				a{
+	  					padding:10px;
+	  				}
+	  			}
+	  		}
+	  		&.navbar-header{
+	  			a{
+	  				padding:5px 10px;
+	  				height: initial;
+	  				img{
+	  					max-width: 40px;
+	  				}
+	  			}
+	  		}
+	  	}
+	  	#lang{
+	  		position: absolute;
+	  		right:0px;
+	  		top:0px;
+	  		bottom:0px;
+	  		margin:auto;
+	  		// height: 20px;
+	  		img{
+	  			margin-left: 5px;
+	  		}
+  			li{
+  				&:hover{
+  					@extend .handHover;
+  					background:$myGrayHover;
+  				}
+  			}
+	  	}
+	}
+
+	>main{
+		// background:black;
+		min-height: 450px;
+	}
+
+	>footer{
+		background:$myGray;
+		h5{
+			text-align: center;
+			padding:40px 0px;
+		}
+	}
 }
 
-header{
-  	nav{
-  		ul{
-  			li{
-  				display:inline-block;
-  			}
-  		}
-  	}
-}
-footer{
-	
-}
