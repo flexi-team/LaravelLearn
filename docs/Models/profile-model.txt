@@ -1,0 +1,11 @@
+// profile-model
+id
+user_id
+phone_number
+address
+city
+country
+skype
+created_at
+updated_at
+status

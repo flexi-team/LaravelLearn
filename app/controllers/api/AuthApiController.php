@@ -73,6 +73,7 @@ class AuthApiController extends ApiController {
   |_____________________________________________________________*/
   public function apiLogin(){
 
+    // Login with email and password
     if (Input::has('email') && Input::has('password')){
       
       $email = Input::get('email');
@@ -81,19 +82,36 @@ class AuthApiController extends ApiController {
           array(
             'email'       =>  $email,
             'password'    =>  $pass,
-            'status_code' =>  '1'
+            'status' =>  'act'
           ),true
         )
       ){
 
+        $user = User::byEmail($email)->take(1)->get()->toArray();
         // Auth Attempt With Success and generate token
         return $this->baseSuccess(array(
-          "api" => $this->storeToken($email),
+          "user" => $user[0],
           "message" => "You has been logged in Successfully!"
         ));
       }
       else{
         // Auth Attemp with error
+        return $this->baseError("Authentication Info Is Not Valid!");
+      }
+    }
+    else if (Input::has('token')){
+      $result =  UserAuth::customAuth(Input::get('token'));
+
+      if ($result){
+
+        $user = User::hasToken(Input::get('token'))->take(1)->get()->toArray();
+
+        return $this->baseSuccess(array(
+          "user" => $user[0],
+          "message" => "You has been logged in Successfully!"
+        ));
+      }
+      else{
         return $this->baseError("Authentication Info Is Not Valid!");
       }
     }

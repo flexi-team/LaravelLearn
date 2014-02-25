@@ -4,23 +4,20 @@ class UserTableSeeder extends Seeder {
  
     public function run()
     {
-        DB::table('users')->delete();
+        DB::table('user')->delete();
  
         User::create(array(
-            'username' => 'admin',
+            'name' => 'Promsopheak Nuon',
             'email' => 'admin@admin.com',
-            'name' => 'admin',
-            'status_code' => '1',
+            'name' => 'Admin',
+            'location' => 'Phnom Penh',
+            'latitude' => 11.558831,
+            'longitude' => 104.917445,
+            'status' => 'act',
             'password' => Hash::make('123')
         ));
  
-        User::create(array(
-            'username' => 'pheak@admin.com',
-            'email' => 'pheak@admin.com',
-            'name' => 'pheak',
-            'status_code' => '1',
-            'password' => Hash::make('123')
-        ));
+        
     }
  
 }

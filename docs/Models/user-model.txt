@@ -1,0 +1,23 @@
+// users-model
+// http://laravel.com/docs/schema#adding-columns
+id 
+name
+gender
+email
+avatar_url
+password
+facebook_name
+facebook_username
+facebook_token
+facebook_est_expired
+location
+latitude
+longitude
+is_email_activated
+is_social_connected
+is_facebook_linked
+profile_url
+points
+created_at
+updated_at
+status
