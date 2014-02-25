@@ -23,6 +23,19 @@
 						</ul>
 					</footer>
 				</div>
+				<div class="boxBack">
+					</header>
+					<article class="photo">
+						
+					</article>
+					<footer>
+						<ul>
+							<li>Price : $786</li>
+							<li>Color : White</li>
+							<li>Type : New</li>
+						</ul>
+					</footer>
+				</div>
 			</div>
 		</div>
 
