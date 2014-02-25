@@ -6,8 +6,13 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'ApiController' => $baseDir . '/app/controllers/api/ApiController.php',
+    'AccUser' => $baseDir . '/app/models/AccUser.php',
+    'Account' => $baseDir . '/app/models/Account.php',
+    'AccountTableSeeder' => $baseDir . '/app/database/seeds/AccountTableSeeder.php',
+    'AccountUserTableSeeder' => $baseDir . '/app/database/seeds/AccountUserTableSeeder.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
+    'CreateAccountTable' => $baseDir . '/app/database/migrations/2014_02_22_154329_create_account_table.php',
+    'CreateAccountUserTable' => $baseDir . '/app/database/migrations/2014_02_22_155014_create_account_user_table.php',
     'CreateUsersTable' => $baseDir . '/app/database/migrations/2014_02_08_054640_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',
     'HomeController' => $baseDir . '/app/controllers/HomeController.php',
@@ -16,5 +21,10 @@ return array(
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
     'User' => $baseDir . '/app/models/User.php',
-    'UserApiController' => $baseDir . '/app/controllers/api/UserApiController.php',
+    'UserAuth' => $baseDir . '/app/models/UserAuth.php',
+    'UserController' => $baseDir . '/app/controllers/UserController.php',
+    'UserTableSeeder' => $baseDir . '/app/database/seeds/UserTableSeeder.php',
+    'api\\ApiController' => $baseDir . '/app/controllers/api/ApiController.php',
+    'api\\AuthApiController' => $baseDir . '/app/controllers/api/AuthApiController.php',
+    'api\\UserApiController' => $baseDir . '/app/controllers/api/UserApiController.php',
 );

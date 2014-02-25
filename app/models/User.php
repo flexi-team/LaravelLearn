@@ -10,15 +10,56 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var string
 	 */
-	protected $table = 'users';
-	protected $userSetting = 'userSetting';
+	protected $table = 'user';
+
+	// Enable soft delete
+	// http://laravel.com/docs/eloquent#insert-update-delete
+	protected $softDelete = true;
 
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array
 	 */
-	protected $hidden = array('password');
+	protected $hidden = array(
+		'password',
+		'facebook_token',
+		'facebook_est_expired',
+		'is_email_activated',
+		'is_social_connected',
+		'is_facebook_linked',
+		'gender',
+		'status'
+	);
+
+
+
+	// Put guard on some attribute
+  protected $guarded = array('id');
+
+
+	/**
+	 * Override fillable fields
+	 */
+	protected $fillable = array(
+    'name', 
+    'email', 
+    'avatar_url',
+    'password',
+    'facebook_name',
+    'facebook_username',
+    'facebook_token',
+    'facebook_est_expired',
+    'location',
+    'latitude',
+    'longitude',
+    'is_email_activated',
+    'is_social_connected',
+    'is_facebook_linked',
+    'profile_url'
+  );
+
+
 
 	/**
 	 * Get the unique identifier for the user.
@@ -52,11 +93,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	/*____________________________________________________________
   |
-  | Relationship definement between auth and user object
+  | Relationship definement between account-user and user object
   | Param: none
   |_____________________________________________________________*/
-	public function auth(){
-		return $this->hasMany('UserAuth','user_auth_id','id');
+	public function accounts(){
+		return $this->belongsToMany('Account','account-user');
 	}
 
 	
