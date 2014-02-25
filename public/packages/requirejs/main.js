@@ -21,4 +21,6 @@ require([
     // Load JS APP
     base + 'packages/app/app',
 
+    base + 'packages/script/frontEndController',
+
 ]);
