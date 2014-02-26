@@ -5031,29 +5031,64 @@ body {
       text-align: center;
       padding: 40px 0px; }
 
-#UI #Content3D .box {
-  overflow: hidden;
-  background: #f3f3f3;
-  border: 1px solid #e6e6e6;
-  min-height: 300px;
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease; }
-  #UI #Content3D .box:hover {
+#UI {
+  margin-top: 30px; }
+  #UI #Content3D {
+    position: relative;
     -webkit-perspective: 600;
     -moz-perspective: 600;
-    perspective: 600;
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    -o-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -ms-transform: rotateY(180deg);
-    -o-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    backface-visibility: hidden; }
+    perspective: 600; }
+    #UI #Content3D img {
+      width: 100%; }
+    #UI #Content3D .box {
+      overflow: hidden;
+      background: #f3f3f3;
+      border: 1px solid #e6e6e6;
+      min-height: 300px;
+      -webkit-transition: all 0.4s ease;
+      transition: all 0.4s ease;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      backface-visibility: hidden; }
+      #UI #Content3D .box.flip {
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -o-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        -webkit-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+        -ms-transform: rotateY(180deg);
+        -o-transform: rotateY(180deg);
+        transform: rotateY(180deg); }
+    #UI #Content3D .box-back {
+      overflow: hidden;
+      background: #f3f3f3;
+      border: 1px solid #e6e6e6;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0px;
+      left: 0px;
+      -webkit-transition: all 0.4s ease;
+      transition: all 0.4s ease;
+      -webkit-transform-style: preserve-3d;
+      -moz-transform-style: preserve-3d;
+      -o-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      -webkit-transform: rotateY(-180deg);
+      -moz-transform: rotateY(-180deg);
+      -ms-transform: rotateY(-180deg);
+      -o-transform: rotateY(-180deg);
+      transform: rotateY(-180deg);
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      backface-visibility: hidden; }
+      #UI #Content3D .box-back.flip {
+        -webkit-transform: rotateY(0deg);
+        -moz-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+        transform: rotateY(0deg); }
 
 .login-form .login-form-email-control .login-form-group-addon {
   border-bottom-left-radius: 0px; }
