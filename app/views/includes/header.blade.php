@@ -28,7 +28,8 @@
 		<li><a href="#">Migrate(Database)</a></li>
 		<li><a href="#">Blade Laravel</a></li>
 		<li><a href="#">Language</a></li>
-		<li><a href="#">UI Testing</a></li>
+		<li><a href="{{url('/')}}">UI Testing</a></li>
+		<li>{{HTML::link('/ui', 'UI')}}</li>
       </ul>
       <ul id="lang" class="nav navbar-nav navbar-right">
         <li><a href="#"><span>English</span><img src="img/layout/en_icon.jpg" alt="language icon"></a></li>
