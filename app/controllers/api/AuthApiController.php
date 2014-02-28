@@ -229,29 +229,5 @@ class AuthApiController extends ApiController {
       return $randomString;
   }
 
-  /*____________________________________________________________
-  |
-  | Utility: Get Current Timestamp
-  | param: @interval 
-  |_____________________________________________________________*/
-  public function getTimestamp($interval,$inc=true) {
-    date_default_timezone_set ("UTC");
-    
-    $date = new \DateTime();
-
-    if ($interval!=null){
-      if ($inc==true){
-        $date->add(new \DateInterval($interval)); //add intervals  
-      }
-      else{
-        $date->sub(new \DateInterval($interval));
-      }
-      
-    }
-     
-    
-    $timestamp = date_timestamp_get($date);
-    return $timestamp;
-
-  }
+  
 }

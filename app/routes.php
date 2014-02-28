@@ -74,9 +74,12 @@ Route::group(array('prefix' => 'api/v1'), function()
     Route::post('api-login','\api\AuthApiController@apiLogin');
     // Logout from Mobile or API (Ajax call)
     Route::get('api-logout','\api\AuthApiController@apiLogout');
-    // Register new users
-    //Route::post('user','\api\UserApiController@store');
+
+    // User API
+    
     Route::resource('users', '\api\UserApiController');
+    // User Avatar API
+    Route::post('users/{userHandle}/avatar','\api\UserApiController@storeAvatar');
 });
 
 

@@ -76,4 +76,50 @@ class ApiController extends Controller {
 		// Check Session
 	}
 
+	//
+	// Helper Method
+	//
+
+	/*____________________________________________________________
+  |
+  | Utility: Get Current Timestamp
+  | param: @interval 
+  |_____________________________________________________________*/
+  public function getTimestamp($interval,$inc=true) {
+    date_default_timezone_set ("UTC");
+    
+    $date = new \DateTime();
+
+    if ($interval!=null){
+      if ($inc==true){
+        $date->add(new \DateInterval($interval)); //add intervals  
+      }
+      else{
+        $date->sub(new \DateInterval($interval));
+      }
+      
+    }
+     
+    
+    $timestamp = date_timestamp_get($date);
+    return $timestamp;
+
+  }
+
+  /*____________________________________________________________
+  |
+  | Utility: Random String
+  | param: @length = 10
+  |_____________________________________________________________*/
+  public function generateRandomString($length = 10) {
+      $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      $randomString = '';
+      for ($i = 0; $i < $length; $i++) {
+          $randomString .= $characters[rand(0, strlen($characters) - 1)];
+      }
+      return $randomString;
+  }
+
+  
+
 }
