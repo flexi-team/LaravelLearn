@@ -30,6 +30,11 @@ use Underscore\Types\Arrays;
 |_____________________________________________________________*/
 class UserApiController extends ApiController {
 
+  //
+  // Variables used in user api
+  //
+  private $userUploadPath = "resources/u/{id}/{fileName}";
+
 
   /*____________________________________________________________
   |
@@ -249,6 +254,70 @@ class UserApiController extends ApiController {
   }
 
 
+  // File Upload
+  /*____________________________________________________________
+  |
+  | Store/create user avatar
+  | param: @post
+  | Resouces: http://laravel.com/docs/requests#files
+  |_____________________________________________________________*/
+  public function storeAvatar($id){
+
+    if (Input::hasFile('avatar')){
+
+      $newName = $this->generateRandomString(5) . $this->getTimestamp(null) . '.' . Input::file('avatar')->getClientOriginalExtension();
+
+      $path = str_replace("{id}", $id, $this->userUploadPath);
+      $path = str_replace("{fileName}", $newName, $path);
+
+      $dir = substr($path,0, strrpos($path, "/"));
+
+      // Check path existed or not
+      $isFileExisted = file_exists($dir);
+      if (!$isFileExisted){
+        $isCreated = mkdir($dir,0777,true);  
+
+        
+
+      }
+      else{
+        $isCreated = true;
+      }
+
+
+      if ($isCreated){
+        // Move File to That New Path and Save to Database
+        Input::file('avatar')->move($dir,$newName);
+        // Store to database
+        $user = User::find($id);
+        if (is_object($user) && $user->exists==true){
+          $user->avatar_url = $path;
+          $user->save();
+
+          $result = User::where('id','=',$id)->with("accounts")->get()->toArray();
+
+          return $this->baseSuccess($result,200);
+
+        }
+        else{
+          return $this->baseError("User Not Found");
+        }
+      }
+      else{
+        return $this->baseError("File Not Found or Error");
+      }
+      
+
+
+
+
+    }
+    else{
+      return $this->baseError("File Input is Required");   
+    }
+    
+  }
+
 
   /*____________________________________________________________
   |
@@ -286,6 +355,8 @@ class UserApiController extends ApiController {
     }
    // return $this->baseUnimplemented();
   }
+
+
 
 
 
