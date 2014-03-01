@@ -70,6 +70,23 @@ body{
 		img{
 			width: 100%;
 		}
+		h4{
+			font-weight: bold;
+			color: #a8f133;
+			background: -moz-linear-gradient(-45deg, #686868 0%, #6D7177 50%, #0065FF 51%, #006FFC 100%);
+			background: -webkit-linear-gradient(-45deg, #686868 0%, #6D7177 50%, #0065FF 51%, #006FFC 100%);
+			background: linear-gradient(-45deg, #686868 0%, #6D7177 50%, #0065FF 51%, #006FFC 100%);
+			background-size: 1500%;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			-webkit-animation: em-animation 5s linear 0s infinite alternate;
+			-moz-background-clip: text;
+			-moz-text-fill-color: transparent;
+			-moz-animation: em-animation 5s linear 0s infinite alternate;
+			background-clip: text;
+			text-fill-color: transparent;
+			animation: em-animation 5s linear 0s infinite alternate;
+		}
 		.box{
 			overflow:hidden;
 			// padding:15px 0px;
