@@ -1,0 +1,7 @@
+// account-model
+id
+account
+priviledge_level
+created_at
+updated_at
+status

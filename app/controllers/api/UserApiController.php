@@ -10,6 +10,9 @@ use \Hash;
 use \User;
 use \UserAuth;
 use \Response;
+use \Validator;
+use \AccUser;
+use Underscore\Types\Arrays;
 
 /*____________________________________________________________
 |
@@ -22,24 +25,117 @@ use \Response;
 | Update User object
 |_____________________________________________________________
 |
-|
+| Example: http://laravel.com/docs/controllers#restful-controllers
 |
 |_____________________________________________________________*/
 class UserApiController extends ApiController {
 
+  //
+  // Variables used in user api
+  //
+  private $userUploadPath = "resources/u/{id}/{fileName}";
+
 
   /*____________________________________________________________
   |
-  | Index method of user api controllers
+  | Index method of user api controllers.
+  | Path: GET /api/v1/user
   | param: @get
   |_____________________________________________________________*/
   public function index(){
     //return $this->baseUnimplemented();
-    $data = User::with('auth')->get()->toArray();
+    $data = User::with('accounts')->get()->toArray();
     return $this->baseSuccess($data);
   }
 
 
+  /*____________________________________________________________
+  |
+  | Index method of user to get user by id
+  | Path: GET /api/v1/user
+  | param: @get
+  |_____________________________________________________________*/
+  public function show($id){
+    //return $this->baseUnimplemented();
+    $data = User::where('id','=',$id)->with('accounts')->get()->toArray();
+    return $this->baseSuccess($data);
+  }
+
+
+
+  /*____________________________________________________________
+  |
+  | Unimplemented method - resource.create
+  | Path: GET /api/v1/user/create
+  | param: @get
+  |_____________________________________________________________*/
+  public function create(){
+    return $this->baseUnimplemented();
+    
+  }
+
+
+  /*____________________________________________________________
+  |
+  | Store/create user object
+  | param: @get
+  | Resouces: http://scotch.io/tutorials/simple-laravel-crud-with-resource-controllers
+  |_____________________________________________________________*/
+  public function store(){
+
+    // Validate data
+    // read more on validation at http://laravel.com/docs/validation
+    $rules = array(
+      'name'       => 'required',
+      'email'      => 'required|email',
+      'password'   => 'required'
+    );
+
+    $validator = Validator::make(Input::all(), $rules);
+
+    // If error on validated
+    if ($validator->fails()) {
+      return $this->baseError("Name and Email and Password are Required.");
+    }else{
+
+      // try catch save error data
+      try{
+        $data = Input::all();
+
+        $data['password'] = Hash::make($data['password']);
+
+        $result = User::create($data);
+
+        // Check that the data has attached with accounts id to attached or not
+        if (isset($data['accounts']) && is_array($data['accounts'])){
+          // Attach account to user
+          // Add attribute to data
+          $accountsData = array();
+          foreach ($data['accounts'] as $key => $value) {
+            $accountsData[$value]= array('status' => 'act' );
+          }
+
+    
+          $result->accounts()->sync($accountsData);
+          
+
+        }
+
+        $result = $result->toArray();
+
+        // Get user object with id from above and with accounts pivot
+        $result = User::where('id','=',$result['id'])->with("accounts")->get()->toArray();
+
+        return $this->baseSuccess($result,201);
+      }
+      catch(\Exception $e){
+        return $this->baseError("Insert fail");
+      }
+      
+    }
+
+    
+  }
 
 
 
@@ -48,10 +144,179 @@ class UserApiController extends ApiController {
   | Store/create user object
   | param: @get
   |_____________________________________________________________*/
-  public function store($data){
-    return $this->baseUnimplemented();
+  public function update($id){
+
+    // Find user object with the id above
+    $data = User::find($id);
+
+    if (is_object($data) && $data->exists){
+      // Validate the data
+      $rules = array(
+        'email'      => 'email'
+      );
+
+      $validator = Validator::make(Input::all(), $rules);
+
+      // If error on validated
+      if ($validator->fails()) {
+        return $this->baseError("Incorrect data.");
+      }else{
+
+        // try catch save error data
+        try{
+
+
+          // Param
+          $param = Input::all();
+
+          // Update the model
+          $result = $data->update($param);
+
+          // Check if the account is updated too
+          if (isset($param['accounts']) && is_array($param['accounts'])){
+            // Attach account to user
+            // Add attribute to data
+            $accountsData = array();
+            foreach ($param['accounts'] as $key => $value) {
+              $accountsData[$value]= array('status' => 'act' );
+            }
+
+      
+            $data->accounts()->sync($accountsData);
+            
+
+          }
+
+          // Get user object with id from above and with accounts pivot
+          $result = User::where('id','=',$id)->with("accounts")->get()->toArray();
+
+          return $this->baseSuccess($result,200);
+
+        }catch(\Exception $e){
+          return $this->baseError("Update fail!");
+        }
+      }
+      
+    }
+    else{
+      return $this->baseError("The User is Not Existed");
+    }
+
+    
+
   }
 
+
+
+   /*____________________________________________________________
+  |
+  | Delete user object
+  | param: @id
+  |_____________________________________________________________*/
+  public function destroy($id){
+
+
+    $data = User::find($id);
+
+    if (is_object($data) && $data->exists){
+
+      try{
+
+
+        // Remove USer and User account completedly from database
+        $affectedRows = AccUser::where("user_id","=",$id)->delete();
+        $affectedRows = $affectedRows + User::destroy($id);
+
+        if ($affectedRows>0){
+          return $this->baseSuccess("Remove Successfully");
+        }
+        else{
+          return $this->baseError("Remove Fail"); 
+        }
+        // Soft remove user
+
+
+      }
+      catch(\Exception $e){
+        return $this->baseError("Remove Fail"); 
+      }
+
+      
+
+
+    }
+    else{
+
+
+      return $this->baseError("Remove Fail. No User with this id"); 
+
+    }
+  }
+
+
+  // File Upload
+  /*____________________________________________________________
+  |
+  | Store/create user avatar
+  | param: @post
+  | Resouces: http://laravel.com/docs/requests#files
+  |_____________________________________________________________*/
+  public function storeAvatar($id){
+
+    if (Input::hasFile('avatar')){
+
+      $newName = $this->generateRandomString(5) . $this->getTimestamp(null) . '.' . Input::file('avatar')->getClientOriginalExtension();
+
+      $path = str_replace("{id}", $id, $this->userUploadPath);
+      $path = str_replace("{fileName}", $newName, $path);
+
+      $dir = substr($path,0, strrpos($path, "/"));
+
+      // Check path existed or not
+      $isFileExisted = file_exists($dir);
+      if (!$isFileExisted){
+        $isCreated = mkdir($dir,0777,true);  
+
+        
+
+      }
+      else{
+        $isCreated = true;
+      }
+
+
+      if ($isCreated){
+        // Move File to That New Path and Save to Database
+        Input::file('avatar')->move($dir,$newName);
+        // Store to database
+        $user = User::find($id);
+        if (is_object($user) && $user->exists==true){
+          $user->avatar_url = $path;
+          $user->save();
+
+          $result = User::where('id','=',$id)->with("accounts")->get()->toArray();
+
+          return $this->baseSuccess($result,200);
+
+        }
+        else{
+          return $this->baseError("User Not Found");
+        }
+      }
+      else{
+        return $this->baseError("File Not Found or Error");
+      }
+      
+
+
+
+
+    }
+    else{
+      return $this->baseError("File Input is Required");   
+    }
+    
+  }
 
 
   /*____________________________________________________________
@@ -90,6 +355,8 @@ class UserApiController extends ApiController {
     }
    // return $this->baseUnimplemented();
   }
+
+
 
 
 

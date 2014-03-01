@@ -1,9 +1,7 @@
-@import 'base'; 
+@import 'bourbon/bourbon';
+@import 'base';
+@import 'extend';
 @import 'layout';
 @import 'module';
 @import 'state';
 @import 'theme';
-
-.classtest{
-	
-}

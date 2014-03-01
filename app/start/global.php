@@ -67,6 +67,20 @@ App::down(function()
 	return Response::make("Be right back!", 503);
 });
 
+
+// 404 Error Handling Differently Depend on Routes
+// Res: http://stackoverflow.com/questions/17972276/laravel-how-to-respond-with-custom-404-error-depending-on-route
+App::missing(function($exception) 
+{
+    if (Request::is('api/*'))
+    {
+        return Response::json("API Not Found",404);
+    }
+    else
+    {
+        return Response::view('default.missing',array(),404);
+    }
+});
 /*
 |--------------------------------------------------------------------------
 | Require The Filters File

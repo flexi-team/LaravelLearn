@@ -13,7 +13,10 @@ class DatabaseSeeder extends Seeder {
 
 		// $this->call('UserTableSeeder');
 		// Add or Uncomment this line
+		$this->call('AccountTableSeeder');
     $this->call('UserTableSeeder');
+    
+    $this->call('AccountUserTableSeeder');
 	}
 
 }

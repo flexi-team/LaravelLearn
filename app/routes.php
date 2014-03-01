@@ -23,6 +23,10 @@ Route::get('/product', "ProductController@showProduct");
 Route::get('/', "HomeController@showHome");
 Route::get('/login', "UserController@getLogin");
 
+Route::get('/user', "UserController@getUser");
+
+Route::get('/ui', "UIController@index");
+
 // Test authentication 
 // Tutorial - http://code.tutsplus.com/tutorials/laravel-4-a-start-at-a-restful-api--net-29785
 /*Route::filter('auth.basic', function()
@@ -70,6 +74,12 @@ Route::group(array('prefix' => 'api/v1'), function()
     Route::post('api-login','\api\AuthApiController@apiLogin');
     // Logout from Mobile or API (Ajax call)
     Route::get('api-logout','\api\AuthApiController@apiLogout');
+
+    // User API
+    
+    Route::resource('users', '\api\UserApiController');
+    // User Avatar API
+    Route::post('users/{userHandle}/avatar','\api\UserApiController@storeAvatar');
 });
 
 
@@ -79,7 +89,7 @@ Route::group(array('prefix' => 'api/v1'), function()
 |_______________________________________________________________*/
 Route::group(array('prefix' => 'api/v1','before'=>'custom.auth'), function()
 {
-    Route::resource('users', '\api\UserApiController');
+    //Route::resource('users', '\api\UserApiController');
 
     // Store user auth
     Route::post('users/{userHandle}/authentication','\api\UserApiController@storeUserAuth');
