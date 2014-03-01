@@ -56,7 +56,15 @@
 				</div>
 		  	</div>
 		  	<div class="tab-pane" id="profile">
-		  		dfadsdsa
+				<div id="owl-example" class="owl-carousel">
+				  <div><img src="img/content/product1.jpg" alt="product1"></div>
+				  <div><img src="img/content/product1.jpg" alt="product1"></div>
+				  <div><img src="img/content/product1.jpg" alt="product1"></div>
+				  <div><img src="img/content/product1.jpg" alt="product1"></div>
+				  <div><img src="img/content/product1.jpg" alt="product1"></div>
+				  <div><img src="img/content/product1.jpg" alt="product1"></div>
+				  <div><img src="img/content/product1.jpg" alt="product1"></div>
+				</div>
 		  	</div>
 		  	<div class="tab-pane" id="messages">
 		  		dfafsf
@@ -74,6 +82,7 @@
 				$('.box').toggleClass('flip');
 				$('.box-back').toggleClass('flip');	
 			})
+			$("#owl-example").owlCarousel();
 		})
 
 	</script>

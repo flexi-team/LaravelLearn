@@ -17,7 +17,7 @@
 		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		<!-- {{HTML::script('packages/requirejs/require.js',array("data-main"=>"packages/requirejs/main"))}} -->
-
+		{{HTML::script('packages/tools/owl-carousel/owl.carousel.min.js',array(""))}}
 	</head>
 	<body>
 
