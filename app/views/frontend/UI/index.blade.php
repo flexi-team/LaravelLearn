@@ -13,7 +13,7 @@
 		  	<li><a href="#settings" data-toggle="tab">Settings</a></li>
 		</ul>
 
-		<div class="tab-content">
+<!-- 		<div class="tab-content">
 		  	<div class="tab-pane active" id="Content3D">
 				<div class="row">
 					<h4 class="col-lg-12">3D Switch Content</h4>
@@ -72,7 +72,7 @@
 		  	<div class="tab-pane" id="settings">
 		  		dfadaf
 		  	</div>
-		</div>
+		</div> -->
 
 	</div>
 
@@ -80,11 +80,10 @@
 		$(function(){
 			$('#flipNow').click(function(){
 				$('.box').toggleClass('flip');
-				$('.box-back').toggleClass('flip');	
+				$('.box-back').toggleClass('flip');
 			})
 			$("#owl-example").owlCarousel();
 		})
-
 	</script>
 
 @stop
