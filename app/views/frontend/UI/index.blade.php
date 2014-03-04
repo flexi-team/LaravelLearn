@@ -7,16 +7,16 @@
 
 
 		<ul class="nav nav-tabs" id="myTab">
-		  	<li class="active"><a href="#Content3D" data-toggle="tab">Flip 3D</a></li>
+		  	<li><a href="#Content3D" data-toggle="tab">Flip 3D</a></li>
 		  	<li><a href="#slideScroll" data-toggle="tab">Slide & Scroll</a></li>
-		  	<li><a href="#messages" data-toggle="tab">Messages</a></li>
+		  	<li class="active"><a href="#sticky" data-toggle="tab">Sticky Element</a></li>
 		  	<li><a href="#Other" data-toggle="tab">Other</a></li>
 		</ul>
 
 		<div class="tab-content">
 
 			<!-- =============== flip 3d content ============= -->
-		  	<div class="tab-pane fade in active" id="Content3D">
+		  	<div class="tab-pane fade" id="Content3D">
 				<div class="row">
 					<a href="http://s3.jt.io/tilt/index.html">Title Photo In Paper Facebook App</a>
 					<h4 class="col-lg-12">3D Switch Content</h4>
@@ -73,8 +73,36 @@
 				</div>
 		  	</div>
 
-		  	<div class="tab-pane fade " id="messages">
-		  		dfafsf
+			<!-- ================ sticky element =============== -->
+		  	<div class="tab-pane in active fade" id="sticky">
+		  		<div>
+		  			<img src="img/dark-batman.jpg" alt="banner">
+		  		</div>
+		  		<div class="needToFixed">
+			  		<div class="box row">
+			  			<div class="col-xs-3">
+			  				<div class="item">
+			  					&nbsp;
+			  				</div>
+			  			</div>
+			  			<div class="col-xs-3">
+			  				<div class="item">
+			  					&nbsp;
+			  				</div>
+			  			</div>
+			  			<div class="col-xs-3">
+			  				<div class="item">
+			  					&nbsp;
+			  				</div>
+			  			</div>
+			  			<div class="col-xs-3">
+			  				<div class="item">
+			  					&nbsp;
+			  				</div>
+			  			</div>
+			  		</div>
+		  		</div>
+
 		  	</div>
 
 		  	<!-- ================= other style ================= -->
@@ -104,9 +132,19 @@
 				alert('hi');
 			}
 
-			// $("#test").bind("click change blur",function(){
-			// 	test();
-			// })
+			var myWindow=$(window);
+			myWindow.scroll(function(){
+				// console.log("Scroll Height : " + myWindow.scrollTop() + " Window Height : "+ myWindow.height() +" Footer Height : " + $(' body > footer').height() + " offset top :" + $(' body > footer').offset().top);$(' body > footer').height()
+				console.log( "value : "+ (myWindow.scrollTop()+myWindow.height()-1) +" offset top :" + $(' body > footer').offset().top)
+				// console.log(myWindow.scrollTop());
+				if(myWindow.scrollTop()+myWindow.height()-5 > $(' body > footer').offset().top){
+					// alert('hi');
+					$('.needToFixed').removeClass('fixed');
+				}
+				else{
+					$('.needToFixed').addClass('fixed');
+				}
+			})
 
 		})
 	</script>

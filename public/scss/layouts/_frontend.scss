@@ -67,8 +67,10 @@ body{
 	}
 
 	>footer{
+
 		background:$myGray;
 		h5{
+			border-top: 1px solid gray;
 			text-align: center;
 			padding:40px 0px;
 		}
@@ -179,6 +181,30 @@ body{
 				-ms-transform: skew(5deg) rotate(5deg);
 				-o-transform: skew(5deg) rotate(5deg);
 				transform: skew(5deg) rotate(5deg);
+			}
+		}
+	}
+
+	#sticky{
+		padding-top: 20px;
+		img{
+			width: 100%;
+		}
+		.needToFixed{
+			position: relative;
+			.box{
+				margin-top: 20px;
+				.item{
+					min-height: 200px;
+					background-color: whitesmoke;
+					border:1px solid gray;
+				}
+			}
+			&.fixed{
+				min-height: 200px;
+				.box{
+					position:fixed;
+				}
 			}
 		}
 	}
