@@ -78,7 +78,7 @@
 		  		<div>
 		  			<img src="img/dark-batman.jpg" alt="banner">
 		  		</div>
-		  		<div class="needToFixed">
+<!-- 		  		<div class="needToFixed">
 			  		<div class="box row">
 			  			<div class="col-xs-3">
 			  				<div class="item">
@@ -101,7 +101,34 @@
 			  				</div>
 			  			</div>
 			  		</div>
-		  		</div>
+		  		</div> -->
+
+				<!-- <div class="needToFixed" data-spy="affix" data-offset-top="260" data-offset-bottom="106"> -->
+				<div class="needToFixed">
+			  		<div class="box row">
+			  			<div class="col-xs-3">
+			  				<div class="item">
+			  					&nbsp;
+			  				</div>
+			  			</div>
+			  			<div class="col-xs-3">
+			  				<div class="item">
+			  					&nbsp;
+			  				</div>
+			  			</div>
+			  			<div class="col-xs-3">
+			  				<div class="item">
+			  					&nbsp;
+			  				</div>
+			  			</div>
+			  			<div class="col-xs-3">
+			  				<div class="item">
+			  					&nbsp;
+			  				</div>
+			  			</div>
+			  		</div>
+				</div>
+
 
 		  	</div>
 
@@ -132,19 +159,27 @@
 				alert('hi');
 			}
 
-			var myWindow=$(window);
-			myWindow.scroll(function(){
-				// console.log("Scroll Height : " + myWindow.scrollTop() + " Window Height : "+ myWindow.height() +" Footer Height : " + $(' body > footer').height() + " offset top :" + $(' body > footer').offset().top);$(' body > footer').height()
-				console.log( "value : "+ (myWindow.scrollTop()+myWindow.height()-1) +" offset top :" + $(' body > footer').offset().top)
-				// console.log(myWindow.scrollTop());
-				if(myWindow.scrollTop()+myWindow.height()-5 > $(' body > footer').offset().top){
-					// alert('hi');
-					$('.needToFixed').removeClass('fixed');
-				}
-				else{
-					$('.needToFixed').addClass('fixed');
-				}
-			})
+		    $('.needToFixed .box').affix({
+		        offset: { top: $('.needToFixed .box').offset().top +75}
+		    });
+		    var myWindow=$(window);
+		    myWindow.scroll(function(){
+		    	console.log( myWindow.scrollTop()+" "+$('.needToFixed .box').offset().top);
+		    })
+
+			// var myWindow=$(window);
+			// myWindow.scroll(function(){
+			// 	// console.log("Scroll Height : " + myWindow.scrollTop() + " Window Height : "+ myWindow.height() +" Footer Height : " + $(' body > footer').height() + " offset top :" + $(' body > footer').offset().top);$(' body > footer').height()
+			// 	console.log( "value : "+ (myWindow.scrollTop()+myWindow.height()-1) +" offset top :" + $(' body > footer').offset().top)
+			// 	// console.log(myWindow.scrollTop());
+			// 	if(myWindow.scrollTop()+myWindow.height()-5 > $(' body > footer').offset().top){
+			// 		// alert('hi');
+			// 		$('.needToFixed').removeClass('fixed');
+			// 	}
+			// 	else{
+			// 		$('.needToFixed').addClass('fixed');
+			// 	}
+			// })
 
 		})
 	</script>

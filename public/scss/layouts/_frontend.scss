@@ -192,12 +192,21 @@ body{
 		}
 		.needToFixed{
 			position: relative;
+			height: 200px;
 			.box{
 				margin-top: 20px;
 				.item{
 					min-height: 200px;
 					background-color: whitesmoke;
 					border:1px solid gray;
+				}
+				&.affix{
+					position: initial;
+				}
+				&.affix-top{
+					position: fixed;
+					width: 100%;
+					bottom: 0px;
 				}
 			}
 			&.fixed{
