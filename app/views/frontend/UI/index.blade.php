@@ -157,13 +157,13 @@
 			})
 			$("#owl-example").owlCarousel();
 			
-			var test=function(){
-				alert('hi');
-			}
+			// var test=function(){
+			// 	alert('hi');
+			// }
 			var myoffsetTop;
 			setTimeout(function(){
 				myoffsetTop=$('.needToFixed .box').offset().top-myWindow.height()+200;
-				alert(myoffsetTop);
+				// alert(myoffsetTop);
 			    $('.needToFixed .box').affix({
 			        offset: { top: myoffsetTop}
 			    });
@@ -175,8 +175,8 @@
 		    // console.log( myWindow.scrollTop()+" "+ ($('.needToFixed .box').offset().top+80) +" footer : " + $('footer').offset().top);
 		    
 		    myWindow.scroll(function(){
-		    	console.log( myWindow.scrollTop()+" "+$('.needToFixed .box').offset().top +" footer : " + $('footer').offset().top + " wind h : "+myWindow.height());
-		    	console.log($('.needToFixed .box').offset().top-myWindow.height());
+		    	// console.log( myWindow.scrollTop()+" "+$('.needToFixed .box').offset().top +" footer : " + $('footer').offset().top + " wind h : "+myWindow.height());
+		    	// console.log($('.needToFixed .box').offset().top-myWindow.height());
 		    })
 
 			// var myWindow=$(window);

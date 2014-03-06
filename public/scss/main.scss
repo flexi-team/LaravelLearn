@@ -1,8 +1,4 @@
-@import 'bourbon/bourbon';
-@import 'base';
-@import 'extend';
-@import 'layout';
-@import 'module';
-@import 'state';
-@import 'theme';
-@import 'component';
+@import "vendors/all";
+@import "modules/all";
+@import "partials/all";
+@import "layouts/all";
