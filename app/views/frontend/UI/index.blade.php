@@ -77,6 +77,7 @@
 		  	<div class="tab-pane in active fade" id="sticky">
 		  		<div>
 		  			<img src="img/dark-batman.jpg" alt="banner">
+		  			<img src="img/dark-batman.jpg" alt="banner">
 		  		</div>
 <!-- 		  		<div class="needToFixed">
 			  		<div class="box row">
@@ -149,6 +150,7 @@
 
 	<script type="text/javascript">
 		$(function(){
+			var myWindow=$(window);
 			$('#flipNow').click(function(){
 				$('.box').toggleClass('flip');
 				$('.box-back').toggleClass('flip');
@@ -158,13 +160,23 @@
 			var test=function(){
 				alert('hi');
 			}
+			var myoffsetTop;
+			setTimeout(function(){
+				myoffsetTop=$('.needToFixed .box').offset().top-myWindow.height()+200;
+				alert(myoffsetTop);
+			    $('.needToFixed .box').affix({
+			        offset: { top: myoffsetTop}
+			    });
+			},1000);
 
-		    $('.needToFixed .box').affix({
-		        offset: { top: $('.needToFixed .box').offset().top +75}
-		    });
-		    var myWindow=$(window);
+			
+			// myoffsetTop=655;
+		    
+		    // console.log( myWindow.scrollTop()+" "+ ($('.needToFixed .box').offset().top+80) +" footer : " + $('footer').offset().top);
+		    
 		    myWindow.scroll(function(){
-		    	console.log( myWindow.scrollTop()+" "+$('.needToFixed .box').offset().top);
+		    	console.log( myWindow.scrollTop()+" "+$('.needToFixed .box').offset().top +" footer : " + $('footer').offset().top + " wind h : "+myWindow.height());
+		    	console.log($('.needToFixed .box').offset().top-myWindow.height());
 		    })
 
 			// var myWindow=$(window);

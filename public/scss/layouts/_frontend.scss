@@ -193,7 +193,9 @@ body{
 		.needToFixed{
 			position: relative;
 			height: 200px;
+			max-width: 990px;
 			.box{
+				max-width: 990px;
 				margin-top: 20px;
 				.item{
 					min-height: 200px;
