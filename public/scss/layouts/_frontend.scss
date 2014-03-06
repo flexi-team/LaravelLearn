@@ -219,5 +219,22 @@ body{
 			}
 		}
 	}
+
+	#map{
+		>div{
+			position: relative;
+			min-height: 400px;
+		}
+		.mymap{
+			min-height: 400px;
+			position: absolute; top: 0; bottom: 0; width: 100%;
+			.popup {
+			    text-align: center;
+			}
+			.popup img {
+			    width: 100%;
+			}
+		}
+	}
 }
  
