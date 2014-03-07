@@ -27,6 +27,8 @@ Route::get('/user', "UserController@getUser");
 
 Route::get('/ui', "UIController@index");
 
+Route::get('/dashboard', "DashboardController@index");
+
 // Test authentication 
 // Tutorial - http://code.tutsplus.com/tutorials/laravel-4-a-start-at-a-restful-api--net-29785
 /*Route::filter('auth.basic', function()

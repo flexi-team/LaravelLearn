@@ -15,6 +15,9 @@ require([
     // Load jquery library
     base + 'packages/jquery/jquery-1.11.0.min',
     base + 'packages/jquery/jquery-migrate-1.2.1.min',
+
+    // Load Bootstrap Libraries
+    base + 'packages/bootstrap/bootstrap.min',
     // Load angularjs library
     base + 'packages/angularjs/angular.min',
     base + 'packages/angularjs/angular-animate.min',
