@@ -1,0 +1,63 @@
+// orange: rgb(216, 153, 38)
+// gray : #535353
+// red: #D85126
+body.backend{
+  max-width: 100%;
+}
+header.backend{
+  background-color: #535353;
+  nav{
+    background-color:transparent;
+
+    ul{
+      li{
+        a{
+          color:white;
+          padding-top:10px;
+          padding-bottom:10px;
+          box-shadow: inset 0px 0px 1px 0px rgba(43, 43, 43, 0.8);
+
+          &:hover{
+            color:rgb(216, 153, 38);
+            background-color: transparent;
+          }
+          &.header-login-user{
+            position: relative;
+            padding-left: 50px;
+            .header-login-user-icon{
+              background-color:white;
+              color:#535353;
+              font-size: 20px;
+              position: absolute;
+              top: 10px;
+              left:10px;
+            }
+          }
+          &.header-notification{
+            position: relative;
+
+            .header-notification-badge{
+              position: absolute;
+              top: 0px;
+              left: 50%;
+              color: white;
+              background-color: #D85126;
+              font-size: 11px;
+              /* padding: 1px 8px; */
+              width: 20px;
+              border-radius: 50%;
+              height: 20px;
+              text-align: center;
+            }
+          }
+          
+        } 
+      &:hover{
+        background-color: transparent;
+      }
+
+      }
+    }
+  }
+  
+} 

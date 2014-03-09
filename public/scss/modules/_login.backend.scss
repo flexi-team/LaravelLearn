@@ -1,0 +1,83 @@
+.backend-login{
+  width:400px;
+  height: 280px;
+  margin: auto;
+  position: absolute;
+  top:0px;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  border:1px solid #535353;
+  background-color: #535353;
+
+  border-radius: 2px;
+
+  .backend-login-header{
+    //border-bottom: 1px solid #616161;
+    background-color: #616161;
+    height: 20px;
+    color: white;
+    font-size: 20px;
+
+
+  }
+  .backend-login-body{
+    .input-group{
+      width: 100%;
+      padding: 10px;
+      position: relative;
+
+      &:first-child{
+        margin-top:10px;
+      }
+      .input-addon{
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        padding: 10px;
+        background-color: rgb(122, 122, 122);
+        color: rgb(196, 196, 196);
+      }
+      input{
+        width:100%;
+        background-color: #616161;
+        color:rgb(165, 165, 165);
+
+        border: 0px;
+        padding: 10px;
+        padding-left: 40px;
+      }
+    }
+
+    .button-group{
+      margin-top:10px;
+      padding:10px;
+      .each-button{
+        border: 1px solid #976D1F;
+        padding: 10px;
+        background-color: #d89926;
+        color: white;
+        text-align: center;
+        font-size: 16px;
+      }
+    }
+    .link-group{
+      padding:10px;
+      .left-link{
+        float:left;
+
+        a{
+          color:rgb(165, 165, 165);
+          text-decoration: none;
+
+          &:hover{
+            text-decoration: underline;
+          }  
+        }
+        
+      }
+    }
+  }
+
+  // For Phone
+}

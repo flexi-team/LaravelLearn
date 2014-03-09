@@ -16,15 +16,15 @@
 		<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
 		{{HTML::script('packages/requirejs/require.js',array("data-main"=>"packages/requirejs/main.backend"))}} 
 	</head>
-	<body>
+	<body class="backend">
 
 		<!-- =========== header layout ========= -->
-		<header>
+		<header class="backend">
 			@section('sidebar')
 				
 			@show
 			<!-- @yield('sidebar') -->
-			@include('includes.header')
+			@include('includes.header-backend')
 		</header>	
 
 		<!-- =========== content layout ======== -->
@@ -34,7 +34,7 @@
 
 		<!-- =========== footer ========== -->
 		<footer>
-			@include('includes.footer')
+			@include('includes.footer-backend')
 		</footer>
 
 	</body>
