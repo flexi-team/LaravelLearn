@@ -21,12 +21,9 @@ require([
     base + 'packages/bootstrap/bootstrap.min',
 
     base + 'packages/angularjs/angular.min',
-    base + 'packages/angularjs/angular-animate.min',
-    base + 'packages/angularjs/angular-route.min',
     // Load JS APP
     base + 'packages/app/app',
     base + 'packages/tools/mapbox/mapbox',
-    base + 'packages/tools/owl-carousel/owl.carousel.min',
-    base + 'packages/script/frontEndController',
+    base + 'packages/tools/owl-carousel/owl.carousel.min'
 
 ]);

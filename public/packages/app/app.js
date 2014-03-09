@@ -46,17 +46,22 @@ fb.login(function(response) {
 
 (function() {
     var dependencies = [
+
+        '../angularjs/angular-animate.min',
+        '../angularjs/angular-route.min',
         '../app/auth.sev',
-        '../app/login.ctrl'
+        '../app/login.ctrl',
+        '../script/frontEndController'
 
     ];
 
-    define(dependencies, function(SimpleAuth, LoginController) {
+    define(dependencies, function(a, r, SimpleAuth, LoginController, UITestingCtrl) {
 
         var $app = angular.module('app', ['ngRoute', 'ngAnimate']);
         $app
             .service("simpleAuth", SimpleAuth)
-            .controller("loginController", LoginController);
+            .controller("loginController", LoginController)
+            .controller("UITestingCtrl", UITestingCtrl);
 
         $app
             .config(function($routeProvider, $httpProvider, $locationProvider, $interpolateProvider) {
